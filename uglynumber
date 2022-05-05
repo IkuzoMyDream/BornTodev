@@ -1,0 +1,21 @@
+"""
+เป็นการประกอบด้วย 3 11 19 "เท่านั้น"
+"""
+
+
+def isugly(n):
+    if n <= 0:
+        return False
+    for p in [3,11,19]:
+        while n % p == 0:
+            n //= p
+    return n == 1
+
+ans = []
+n = int(input())
+i = 0
+while len(ans) != n:
+    if isugly(i):
+        ans.append(i)
+    i += 1
+print(ans[-1])

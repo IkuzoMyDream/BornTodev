@@ -1,0 +1,19 @@
+import numpy as np
+try:
+    ar,ac = input().split()
+    br,bc = input().split()
+    a = []
+    b = []
+    for i in range(int(ar)):
+        n = [int(i) for i in input().split()]
+        a.append(n)
+    for i in range(int(br)):
+        n = [int(i) for i in input().split()]
+        b.append(n)
+    A = np.array(a)
+    B = np.array(b)
+    ans = np.dot(A,B)
+    for i in ans:
+        print(i)
+except:
+    print('Cant calculate !')

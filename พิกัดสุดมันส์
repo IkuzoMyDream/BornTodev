@@ -1,0 +1,21 @@
+"""
+ต้องการสร้างตารางรูป (#) โดยมีการระบุพิกัดไว้ โดยจุดที่ระบุพิกัดจะแทนที่ด้วย (*) ซึ่งพิกัดคู่อันดับ (0,0) จะอยู่ที่มุมล่างซ้ายของตาราง เมื่อไปทางขวา x จะเพิ่ม และเมื่อไปด้านบน y จะเพิ่ม
+Output เป็นตารางที่จุด Mark จะอยู่ และหากคู่อันดับ (x,y) เกินขนาดของตารางก็จะมี Output ว่า That position is not loaded.
+"""
+x,y = map(str,input().split(','))
+x = x.replace('(','')
+y = y.replace(')','')
+
+board = int(input())
+ls = []
+if int(y)+1>board or int(x)+1>board:
+    print('That position is not loaded.')
+
+else:
+    for i in range(board) :
+        if i == int(y) :
+            ls.append('#' * (int(x)) + '*' + '#' * (board - int(x) - 1))
+        else :
+            ls.append('#' * board)
+    for i in ls[: :-1] :
+        print(i)

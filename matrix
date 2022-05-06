@@ -1,0 +1,27 @@
+"""
+[30 38]
+[19 26]
+[22 28]
+"""
+ar,ac = map(int, input().split())
+br,bc = map(int, input().split())
+
+if ac != br:
+    print('Cant calculate !')
+
+else:
+    A = []
+    for a in range(ar):
+        A.append([int(i) for i in input().split()])
+    B = []
+    for b in range(br):
+        B.append([int(i) for i in input().split()])
+    result = [[sum(a * b for a , b in zip(X_row , Y_col))
+               for Y_col in zip(*B)]
+              for X_row in A]
+    ans = ''
+    for i,j in enumerate(result, start=1):
+        ans += str(j)
+        ans += '\n'
+    ans = ans.replace(',','')
+    print(ans)

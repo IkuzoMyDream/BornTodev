@@ -1,0 +1,47 @@
+import math
+
+def next_direction(n):
+    return  0 if n == 3 else n+1
+
+def next_position(x,y,d):
+    dir = [(1,0),(0,1),(-1,0),(0,-1)]
+    return x + dir[d][1], y + dir[d][0]
+
+def make_spiral(n):
+    dim = math.ceil(math.sqrt(n)) #dimension
+    dir = 0
+    dn, rt, lt, up = 1,0,0,0
+    sp = []
+    for i in range(dim):
+        sp.append([""]*dim) #make board 2d
+    x, y = 0,-1
+    for i in range(1,n+1):
+        tx, ty = next_position(x,y,dir)
+        if ty<dim and tx<dim and sp[ty][tx]=="":
+            x,y = tx,ty
+        else:
+            dir = next_direction(dir)
+            x,y = next_position(x,y,dir)
+            # counter 
+            if dir == 0 :
+                dn += 1
+            elif dir == 1 :
+                rt += 1
+            elif dir == 2 :
+                up += 1
+            else :
+                lt += 1
+        sp[y][x] = "%03d" % i
+
+    return sp, up, dn ,lt, rt
+
+def show_spiral(n):
+    sp , up , dn , lt , rt = make_spiral(n)
+    for row in sp:
+        print(" ".join(row))
+    print("UP :", up)
+    print("DOWN :" , dn)
+    print("LEFT :" , lt)
+    print("RIGHT :" , rt)
+
+show_spiral(int(input()))

@@ -1,0 +1,23 @@
+"""
+แสดง Matrix เป็นค่าที่ถูก scaled 0-1 แล้ว โดยแต่ละค่าให้แสดงทศนิยม 4 ตำแหน่ง
+"""
+m = int(input())
+n = int(input())
+k = m
+scaled = []
+
+for i in range(m*n):
+    scaled.append(float(input()))
+
+devider = max(scaled) - min(scaled)
+minx = min(scaled)
+
+for i,j in enumerate(scaled):
+    x = (scaled[i] - minx) / devider
+    scaled[i] = '%.4f' %(x)
+
+for i,j in enumerate(scaled, start=1):
+    print(j, end=' ')
+    if i == m:
+        print()
+        m += k
